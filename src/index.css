@@ -1,0 +1,170 @@
+@import "tailwindcss";
+@import "@fontsource-variable/lora";
+@import "@fontsource-variable/jetbrains-mono";
+
+@theme {
+  --color-leaf: var(--leaf);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-amber: var(--amber);
+  --color-terracotta: var(--terracotta);
+  --color-muted: var(--muted);
+  --font-serif: 'Lora Variable', Georgia, serif;
+  --font-mono: 'JetBrains Mono Variable', monospace;
+}
+
+:root {
+  --font-serif: 'Lora Variable', Georgia, serif;
+  --font-mono: 'JetBrains Mono Variable', monospace;
+  --leaf: #2e6f40;
+  --paper: #f4f0ea;
+  --ink: #1a1e1b;
+  --amber: #d97706;
+  --terracotta: #c2593f;
+  --muted: #6b7280;
+  --chart-grid: rgba(26, 30, 27, 0.15);
+  --chart-text: #1a1e1b;
+  --tooltip-bg: #f4f0ea;
+  --radius: 0.5rem;
+  --background: #f4f0ea;
+  --foreground: #1a1e1b;
+  --card: #f4f0ea;
+  --card-foreground: #1a1e1b;
+  --popover: #f4f0ea;
+  --popover-foreground: #1a1e1b;
+  --primary: #2e6f40;
+  --primary-foreground: #f4f0ea;
+  --secondary: #e9dfc4;
+  --secondary-foreground: #1a1e1b;
+  --muted-foreground: #6b7280;
+  --accent: #2e6f40;
+  --accent-foreground: #f4f0ea;
+  --destructive: #c2593f;
+  --border: rgba(26, 30, 27, 0.15);
+  --input: rgba(26, 30, 27, 0.2);
+  --ring: #2e6f40;
+}
+
+.dark {
+  --leaf: #4ade80;
+  --paper: #181c19;
+  --ink: #e8ece9;
+  --amber: #fbbf24;
+  --terracotta: #f87171;
+  --muted: #9ca3af;
+  --chart-grid: rgba(232, 236, 233, 0.15);
+  --chart-text: #e8ece9;
+  --tooltip-bg: #181c19;
+  --background: #181c19;
+  --foreground: #e8ece9;
+  --card: #181c19;
+  --card-foreground: #e8ece9;
+  --popover: #181c19;
+  --popover-foreground: #e8ece9;
+  --primary: #4ade80;
+  --primary-foreground: #181c19;
+  --secondary: #283128;
+  --secondary-foreground: #e8ece9;
+  --muted-foreground: #9ca3af;
+  --accent: #4ade80;
+  --accent-foreground: #181c19;
+  --destructive: #f87171;
+  --border: rgba(232, 236, 233, 0.15);
+  --input: rgba(232, 236, 233, 0.2);
+  --ring: #4ade80;
+}
+
+@layer components {
+  .paper-texture {
+    background-color: var(--paper);
+  }
+  .ink-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.125rem;
+    padding: 0.5rem 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    min-height: 2.25rem;
+    transition: background-color 200ms, border-color 200ms, color 200ms;
+    touch-action: manipulation;
+  }
+  @media (min-width: 640px) {
+    .ink-button {
+      padding: 0.5rem 1rem;
+    }
+  }
+  .ink-frame {
+    border-radius: 0.125rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+  .notebook-input {
+    width: 100%;
+    border-radius: 0.125rem;
+    border: 1px solid var(--input);
+    background-color: transparent;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--ink);
+    outline: none;
+    min-height: 2.5rem;
+    transition: border-color 200ms;
+    touch-action: manipulation;
+  }
+  .notebook-input:focus {
+    border-color: var(--leaf);
+  }
+  .ledger-grid {
+    background-image: radial-gradient(var(--ink) 0.75px, transparent 0.75px);
+    background-size: 16px 16px;
+    background-position: 0 0;
+  }
+
+  @keyframes pulsePoint {
+    0% {
+      transform: scale(1);
+      opacity: 0.95;
+    }
+    50% {
+      transform: scale(1.25);
+      opacity: 0.75;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.95;
+    }
+  }
+
+  .pulse-point-marker {
+    animation: pulsePoint 2s infinite ease-in-out;
+    transform-origin: center;
+  }
+
+  /* Responsive Leaflet Popup on Mobile & Tablet */
+  .leaflet-popup-content-wrapper {
+    border-radius: 4px !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid rgba(26, 30, 27, 0.15) !important;
+    max-width: 90vw !important;
+  }
+
+  .leaflet-popup-content {
+    margin: 8px 10px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Smooth scroll container with hidden scrollbar for swipeable tabs */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+}
